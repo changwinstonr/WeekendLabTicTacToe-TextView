@@ -2,24 +2,33 @@ package ly.generalassemb.drewmahrt.tictactoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 public class GameActivity extends AppCompatActivity {
+    // BRANCH GAME
+    //initialize variables
+    TextView currentTurn, block_1, block_2, block_3, block_4, block_5, block_6, block_7, block_8, block_9;
+    String playerO, playerX;
+    boolean turn = true;
+    double counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        currentTurn = (TextView) findViewById(R.id.game_message_text);
 
-        // BRANCH GAME
         // get intent
-        //
-        //ADD&COMMIT
-
         // update the text view with p1 name
         //ADD&COMMIT
+        currentTurn.setText(getIntent().getExtras().getString("playerO") + " " + "your turn.");
+        //currentTurn.setText(getIntent().getExtras().getString("playerX") + " " + "your turn.");
 
         // find all views by ID
         //ADD&COMMIT
+        
+
 
         // set all on click listeners for each view
         //ADD&COMMIT
