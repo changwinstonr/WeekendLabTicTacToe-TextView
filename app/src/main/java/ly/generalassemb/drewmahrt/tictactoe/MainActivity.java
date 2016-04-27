@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         // BRANCH MAIN
         // find views by ID
         lastWinnar = (TextView) findViewById(R.id.last_winner_text);
+    }
+
+    public void startGame(View view) {
         playerOne = (EditText) findViewById(R.id.player_one_name);
         playerTwo = (EditText) findViewById(R.id.player_two_name);
 
@@ -32,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         // new Intent with input
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
-            intent.putExtra("playerOneName", playerOne.getText().toString());
-            intent.putExtra("playerTwoName", playerTwo.getText().toString());
+        intent.putExtra("playerOneName", playerOne.getText().toString());
+        intent.putExtra("playerTwoName", playerTwo.getText().toString());
 
         // start game activity with player info (input)
         startActivity(intent);
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     //SHARED PREFS after GameActivity completion
 }

@@ -31,6 +31,7 @@
         android:id="@+id/start_game_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="startGame"
         android:text="Start Playing!"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/player_two_name"/>
