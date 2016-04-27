@@ -27,7 +27,15 @@ public class GameActivity extends AppCompatActivity {
 
         // find all views by ID
         //ADD&COMMIT
-        
+        block_1 = (TextView) findViewById(R.id.textView);
+        block_2 = (TextView) findViewById(R.id.textView2);
+        block_3 = (TextView) findViewById(R.id.textView3);
+        block_4 = (TextView) findViewById(R.id.textView4);
+        block_5 = (TextView) findViewById(R.id.textView5);
+        block_6 = (TextView) findViewById(R.id.textView6);
+        block_7 = (TextView) findViewById(R.id.textView7);
+        block_8 = (TextView) findViewById(R.id.textView8);
+        block_9 = (TextView) findViewById(R.id.textView9);
 
 
         // set all on click listeners for each view
