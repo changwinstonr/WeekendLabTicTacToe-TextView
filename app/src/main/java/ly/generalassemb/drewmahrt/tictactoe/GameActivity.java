@@ -1,20 +1,22 @@
 package ly.generalassemb.drewmahrt.tictactoe;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+//import android.widget.ImageView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 
 public class GameActivity extends AppCompatActivity implements OnClickListener {
     // BRANCH GAME
     //initialize variables
-    TextView currentTurn, block_1, block_2, block_3, block_4, block_5, block_6, block_7, block_8, block_9;
+    private TextView currentTurn, block_1, block_2, block_3, block_4, block_5, block_6, block_7, block_8, block_9;
     TextView[] blockArray;
-    ImageView playAgain;
-    String playerO, playerX;
+//    ImageView playAgain;
+    private Player playerX;
+    private Player playerO;
     boolean turn = true;
     // create a counter (int) set it to 0
     //ADD&COMMIT
@@ -28,7 +30,12 @@ public class GameActivity extends AppCompatActivity implements OnClickListener {
         currentTurn = (TextView) findViewById(R.id.game_message_text);
 
         // get intent
+        Intent intent = getIntent();
         // update the text view with p1 name
+        String playerOneName = intent.getStringExtra("playerOneName");
+        String playerTwoName = intent.getStringExtra("playerTwoName");
+        playerX = new Player(playerOneName);
+        playerO = new Player(playerTwoName);
         //ADD&COMMIT
         //currentTurn.setText(getIntent().getExtras().getString("playerO") + " " + "your turn.");
         //currentTurn.setText(getIntent().getExtras().getString("playerX") + " " + "your turn.");
@@ -64,7 +71,12 @@ public class GameActivity extends AppCompatActivity implements OnClickListener {
         });*/
 
     }
+        @Override
+        public void onClick(View v) {
+            TextView markBlock = (TextView) v;
+            blockSelect (markBlock);
 
+        }
         // on each click listener :
         //1. if counter is 0 or even number input an "X" to that text view using setText()
         //2. if counter is odd number input an "X" to that text view using setText()
@@ -142,11 +154,6 @@ public class GameActivity extends AppCompatActivity implements OnClickListener {
                 currentTurn.setText(getIntent().getExtras().getString("playerO")+" is a winnar!");
                */
             }
-
-    @Override
-    public void onClick(View v) {
-
-    }
 }
 
 

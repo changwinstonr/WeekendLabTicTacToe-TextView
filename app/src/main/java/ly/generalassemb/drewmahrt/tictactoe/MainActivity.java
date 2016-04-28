@@ -11,9 +11,9 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText playerOne, playerTwo;
-    String playerOneText, playerTwoText, lastWinnarText, playerWinnar;
-    TextView lastWinnar;
+    private EditText playerOne, playerTwo;
+    private TextView lastWinnar;
+    private Button startGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +22,18 @@ public class MainActivity extends AppCompatActivity {
 
         // BRANCH MAIN
         // find views by ID
+        playerOne = (EditText) findViewById(R.id.player_one_name);
+        playerTwo = (EditText) findViewById(R.id.player_two_name);
         lastWinnar = (TextView) findViewById(R.id.last_winner_text);
+        startGame = (Button) findViewById(R.id.start_game_button);
+
     }
 
     public void startGame(View view) {
-        playerOne = (EditText) findViewById(R.id.player_one_name);
-        playerTwo = (EditText) findViewById(R.id.player_two_name);
 
         // update them with input
-        playerOneText = new String(playerOne.getText().toString());
-        playerTwoText = new String(playerTwo.getText().toString());
+//        playerOne = new String(playerOne.getText().toString());
+//        playerTwo = new String(playerTwo.getText().toString());
 
         // new Intent with input
         Intent intent = new Intent(MainActivity.this, GameActivity.class);
