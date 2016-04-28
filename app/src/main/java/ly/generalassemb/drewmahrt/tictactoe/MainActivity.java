@@ -41,11 +41,8 @@ public class MainActivity extends AppCompatActivity {
         // start game activity with player info (input)
         startActivity(intent);
 
-        //ADD & COMMIT; MERGE
-
-
     }
 
 
-    //SHARED PREFS after GameActivity completion
+    //implement SHARED PREFS after GameActivity completion
 }
