@@ -22,7 +22,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     // create a counter (int) set it to 0
     //ADD&COMMIT
     int nextTurn = 0;
-
+    String playerOneName;
+    String playerTwoName;
 
 
     @Override
@@ -30,14 +31,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        currentTurn.findViewById(R.id.game_message_text);
+        currentTurn = (TextView) findViewById(R.id.game_message_text);
         //currentTurn = (TextView) findViewById(R.id.game_message_text);
 
         // get intent
         Intent intent = getIntent();
-        currentTurn.setText(getIntent().getExtras().getString("playerX") + " your turn.");
-        currentTurn.setText(getIntent().getExtras().getString("playerO") + " your turn.");
-
+        playerOneName = getIntent().getExtras().getString("playerOneName");
+        playerTwoName = getIntent().getExtras().getString("playerTwoName");
+        currentTurn.setText(playerOneName + " your turn.");
+        currentTurn.setText(playerTwoName + " your turn.");
         // update the text view with p1 name
         /*String playerOneName = intent.getStringExtra("playerOneName");
         String playerTwoName = intent.getStringExtra("playerTwoName");*/
@@ -47,16 +49,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         // find all views by ID
         //ADD&COMMIT
-        block_1.findViewById(R.id.textView);
+      /*  block_1.findViewById(R.id.textView);
         block_2.findViewById(R.id.textView2);
         block_3.findViewById(R.id.textView3);
         block_4.findViewById(R.id.textView4);
         block_5.findViewById(R.id.textView5);
         block_6.findViewById(R.id.textView6);
         block_7.findViewById(R.id.textView7);
-        block_8.findViewById(R.id.textView8);
-        block_9.findViewById(R.id.textView9);
-/*        block_1 = (TextView) findViewById(R.id.textView);
+        block_8.findViewById(R.id.textView8
+        block_9.findViewById(R.id.textView9);*/
+        block_1 = (TextView) findViewById(R.id.textView);
         block_2 = (TextView) findViewById(R.id.textView2);
         block_3 = (TextView) findViewById(R.id.textView3);
         block_4 = (TextView) findViewById(R.id.textView4);
@@ -64,16 +66,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         block_6 = (TextView) findViewById(R.id.textView6);
         block_7 = (TextView) findViewById(R.id.textView7);
         block_8 = (TextView) findViewById(R.id.textView8);
-        block_9 = (TextView) findViewById(R.id.textView9);*/
+        block_9 = (TextView) findViewById(R.id.textView9);
 //        playAgain = (ImageView) findViewById(R.id.playAgain);
 
         blockArray = new TextView[]{
                 block_1, block_2, block_3, block_4, block_5,
                 block_6, block_7, block_8, block_9};
 
-        /*for (TextView action : blockArray){
+        for (TextView action : blockArray){
             action.setOnClickListener(this);
-        }*/
+        }
         //replay drawable OnClick
         /*playAgain.setOnClickListener(new OnClickListener() {
             @Override
@@ -96,11 +98,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     //ADD&COMMIT
     public void blockSelect(TextView markBlock){
         if(turn){
-            currentTurn.setText(getIntent().getExtras().getString("playerX")+" 's \nturn!");
+            currentTurn.setText(playerOneName+" 's \nturn!");
             //currentTurn.setTextColor(Color.WHITE); //was supposed to go with activity_game black background
             markBlock.setText("X");
         }else{
-            currentTurn.setText(getIntent().getExtras().getString("playerO")+" 's \nturn!");
+            currentTurn.setText(playerTwoName+" 's \nturn!");
             //currentTurn.setTextColor(Color.WHITE); //was supposed to go with activity_game black background
             markBlock.setText("O");
         }
@@ -171,13 +173,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             SharedPreferences.Editor editor = sharedPreferences.edit();
 
             if (!turn) {
-                currentTurn.setText(getIntent().getExtras().getString("playerO") + " is a winnar!");
+                currentTurn.setText(playerTwoName + " is a winnar!");
                 playerOneWin = getIntent().getExtras().getString("");
                 editor.putString("winnar", playerOneWin);
                 editor.apply(); //NTS: very important; OT: syntax diff ".apply();" vs ".commit();"?
 
             } else {
-                currentTurn.setText(getIntent().getExtras().getString("playerX") + " is a winnar!");
+                currentTurn.setText(playerOneName + " is a winnar!"); //member variable global
                 playerTwoWin = getIntent().getExtras().getString("");
                 editor.putString("winnar", playerTwoWin);
                 editor.apply();
