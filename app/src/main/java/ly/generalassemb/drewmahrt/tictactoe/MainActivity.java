@@ -12,8 +12,9 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private EditText playerOne, playerTwo;
-    private TextView lastWinnar;
-    private Button startGame;
+    //private TextView lastWinnar;
+    Button startGame;
+    String playerName1, playerName2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,25 +25,28 @@ public class MainActivity extends AppCompatActivity {
         // find views by ID
         playerOne = (EditText) findViewById(R.id.player_one_name);
         playerTwo = (EditText) findViewById(R.id.player_two_name);
-        lastWinnar = (TextView) findViewById(R.id.last_winner_text);
+        //lastWinnar = (TextView) findViewById(R.id.last_winner_text);
         startGame = (Button) findViewById(R.id.start_game_button);
 
-    }
-
-    public void startGame(View view) {
-
-        // update them with input
+        startGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v){
+                // update them with input
+                playerName1 = playerOne.getText().toString();
+                playerName2 = playerTwo.getText().toString();
 //        playerOne = new String(playerOne.getText().toString());
 //        playerTwo = new String(playerTwo.getText().toString());
 
-        // new Intent with input
-        Intent intent = new Intent(MainActivity.this, GameActivity.class);
-        intent.putExtra("playerOneName", playerOne.getText().toString());
-        intent.putExtra("playerTwoName", playerTwo.getText().toString());
+                // new Intent with input
+                Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                intent.putExtra("playerOneName", playerOne.getText().toString());
+                intent.putExtra("playerTwoName", playerTwo.getText().toString());
 
-        // start game activity with player info (input)
-        startActivity(intent);
+                // start game activity with player info (input)
+                startActivity(intent);
+            }
 
+        });
     }
 
 

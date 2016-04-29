@@ -15,12 +15,13 @@ public class GameActivity extends AppCompatActivity implements OnClickListener {
     private TextView currentTurn, block_1, block_2, block_3, block_4, block_5, block_6, block_7, block_8, block_9;
     TextView[] blockArray;
 //    ImageView playAgain;
-    private Player playerX;
-    private Player playerO;
+//                            private Player playerX;
+//                            private Player playerO;
     boolean turn = true;
     // create a counter (int) set it to 0
     //ADD&COMMIT
     int next_turn = 0;
+    String playerOneWin, playerTwoWin;
 
 
     @Override
@@ -34,11 +35,11 @@ public class GameActivity extends AppCompatActivity implements OnClickListener {
         // update the text view with p1 name
         String playerOneName = intent.getStringExtra("playerOneName");
         String playerTwoName = intent.getStringExtra("playerTwoName");
-        playerX = new Player(playerOneName);
-        playerO = new Player(playerTwoName);
+//                            playerX = new Player(playerOneName);
+//                            playerO = new Player(playerTwoName);
         //ADD&COMMIT
-        //currentTurn.setText(getIntent().getExtras().getString("playerO") + " " + "your turn.");
-        //currentTurn.setText(getIntent().getExtras().getString("playerX") + " " + "your turn.");
+        currentTurn.setText(getIntent().getExtras().getString("playerO") + " " + "your turn.");
+        currentTurn.setText(getIntent().getExtras().getString("playerX") + " " + "your turn.");
 
         // find all views by ID
         //ADD&COMMIT
@@ -152,6 +153,8 @@ public class GameActivity extends AppCompatActivity implements OnClickListener {
    /*     if (winnar){
             if (!turn){
                 currentTurn.setText(getIntent().getExtras().getString("playerO")+" is a winnar!");
+                playerOneWin = getIntent().getExtras().getString("")
+
                */
             }
 }
